@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makeup Navbar - Soft Colors</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #555555; 
+            /* background: #000; */
+        }
+        .top-navbar {
+            background-color: #000000; 
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #FFD1DC; 
+        }
+        .top-navbar .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #FFD1DC; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .top-navbar .menu {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        .top-navbar .menu a {
+            text-decoration: none;
+            color: #FFD1DC; 
+            font-weight: bold;
+            padding: 5px 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .top-navbar .menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #FFD1DC; 
+            transition: width 0.3s ease;
+        }
+        .top-navbar .menu a:hover::after {
+            width: 100%; 
+        }
+        .top-navbar .menu a:hover {
+            color: #FFFFFF; 
+        }
+        .top-navbar .menu i {
+            font-size: 1.2em;
+            cursor: pointer;
+            color: #FFD1DC; 
+            transition: color 0.3s ease;
+        }
+        .top-navbar .menu i:hover {
+            color: #FFFFFF; 
+        }
+
+        .main-navbar {
+            background-color: #000000; 
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            border-bottom: 2px solid #FFD1DC; 
+        }
+        .main-navbar .dropdown {
+            position: relative;
+        }
+        .main-navbar .dropdown span {
+            font-weight: bold;
+            color: #FFD1DC; 
+            cursor: pointer;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+        .main-navbar .dropdown span:hover {
+            color: #FFFFFF; 
+        }
+        .main-navbar .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #000000;
+            min-width: 150px;
+            box-shadow: 0px 8px 16px rgba(255, 209, 220, 0.2); 
+            z-index: 1;
+            border-radius: 5px;
+            border: 1px solid #FFD1DC; 
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .main-navbar .dropdown-content a {
+            color: #FFD1DC; 
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        .main-navbar .dropdown-content a:hover {
+            background-color: #FFD1DC; 
+            color: #000000;
+        }
+        .main-navbar .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+
+        
+/* Slider */
+.slider {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#slider-heading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 50px;
+	font-weight: 600;
+	margin: 4rem 0%;
+	color:#ffffff;
+	animation: fadeInUp 1s ease-out;
+}
+
+.slider-container {
+	max-width: 1200px;
+	width: 95%;
+}
+
+.slider-wrapper {
+	position: relative;
+}
+
+.slider-wrapper .slide-button {
+	position: absolute;
+	top: 50%;
+	outline: none;
+	border: none;
+	height: 50px;
+	width: 50px;
+	z-index: 5;
+	color: #fff;
+	display: flex;
+	cursor: pointer;
+	font-size: 2.2rem;
+	background: #000;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	transform: translateY(-50%);
+}
+
+.slider-wrapper .slide-button:hover {
+	background: #404040;
+}
+
+.slider-wrapper .slide-button#prev-slide {
+	left: -25px;
+	display: none;
+}
+
+.slider-wrapper .slide-button#next-slide {
+	right: -25px;
+}
+
+.slider-wrapper .image-list {
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	gap: 18px;
+	font-size: 0;
+	list-style: none;
+	margin-bottom: 30px;
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+
+.image-item {
+	border-radius: 10px;
+	transition: transform 0.2s ease;
+    margin-left: 20px;
+}
+
+.slider-wrapper .image-list::-webkit-scrollbar {
+	display: none;
+}
+
+.slider-wrapper .image-list .image-item {
+	width: 350px;
+	height: 400px;
+	object-fit: cover;
+}
+
+.container .slider-scrollbar {
+	height: 24px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.slider-scrollbar .scrollbar-track {
+	background: #ccc;
+	width: 100%;
+	height: 2px;
+	display: flex;
+	align-items: center;
+	border-radius: 4px;
+	position: relative;
+}
+
+.slider-scrollbar:hover .scrollbar-track {
+	height: 4px;
+}
+
+.slider-scrollbar .scrollbar-thumb {
+	position: absolute;
+	background: #000;
+	top: 0;
+	bottom: 0;
+	width: 50%;
+	height: 100%;
+	cursor: grab;
+	border-radius: inherit;
+}
+
+.slider-scrollbar .scrollbar-thumb:active {
+	cursor: grabbing;
+	height: 8px;
+	top: -2px;
+}
+
+.slider-scrollbar .scrollbar-thumb::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: -10px;
+	bottom: -10px;
+}
+
+.image-item:hover {
+	transform: scale(1.03);
+}
+
+@media only screen and (max-width: 1023px) {
+	.slider-wrapper .slide-button {
+		display: none !important;
+	}
+
+	.slider-wrapper .image-list {
+		gap: 10px;
+		margin-bottom: 15px;
+		scroll-snap-type: x mandatory;
+	}
+
+	.slider-wrapper .image-list .image-item {
+		width: 280px;
+		height: 380px;
+	}
+
+	.slider-scrollbar .scrollbar-thumb {
+		width: 20%;
+	}
+}
+
+    </style>
+</head>
+<body>
+    <!-- Top Navbar -->
+    <nav class="top-navbar">
+        <div class="logo">Glamour Cosmetics</div>
+        <div class="menu">
+            <a href="#">New Arrivals</a>
+            <a href="#">Best Sellers</a>
+            <a href="#">Sale</a>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-regular fa-heart"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+    </nav>
+
+    <!-- Main Navbar -->
+    <nav class="main-navbar">
+        <div class="dropdown">
+            <span>Face</span>
+            <div class="dropdown-content">
+                <a href="#">Foundation</a>
+                <a href="#">Concealer</a>
+                <a href="#">Blush</a>
+                <a href="#">Highlighter</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <span>Eyes</span>
+            <div class="dropdown-content">
+                <a href="#">Eyeshadow</a>
+                <a href="#">Mascara</a>
+                <a href="#">Eyeliner</a>
+                <a href="#">Brows</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <span>Lips</span>
+            <div class="dropdown-content">
+                <a href="#">Lipstick</a>
+                <a href="#">Lip Gloss</a>
+                <a href="#">Lip Liner</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <span>Skincare</span>
+            <div class="dropdown-content">
+                <a href="#">Cleansers</a>
+                <a href="#">Moisturizers</a>
+                <a href="#">Masks</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <span>Accessories</span>
+            <div class="dropdown-content">
+                <a href="#">Brushes</a>
+                <a href="#">Bags</a>
+                <a href="#">Mirrors</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Section -->
+    <div >
+       <img style="width:100%" src="./Assest/1.jpeg" alt="">
+    </div>
+
+      <!--Slider-->
+      <h1 id="slider-heading" style="align-items: center;"> Best Sellers</h1>
+      <section class="slider">
+  
+        <div class="slider-container">
+          <div class="slider-wrapper">
+            <button id="prev-slide" class="slide-button material-symbols-rounded"><i class="fa-solid fa-less-than"
+                style="font-size: 1.5rem;"></i>
+  
+            </button>
+            <ul class="image-list">
+              <img class="image-item" src="./Assest/contor.png" alt="Travel Destination" />
+              <img class="image-item" src="./Assest/lip glose.png" alt="Travel Destination" />
+              <img class="image-item" src="./Assest/Eye Shades.png" alt="Travel Destination" />
+              <img class="image-item" src="./Assest/Foundation.png" alt="Travel Destination" />
+              <img class="image-item" src="./Assest/jelly tint.png" alt="Travel Destination" />
+              <img class="image-item" src="./Assest/face powder1.png" alt="Travel Destination" />
+              <img class="image-item" src="./Assest/Lip tint 2 valvet.png" alt="Travel Destination" />
+              <img class="image-item" src="./Assest/powder.png" alt="Travel Destination" />
+              <img class="image-item" src="./Assest/LIP tint.png" alt="Travel Destination" />
+              <img class="image-item" src="./Assest/mascara.png" alt="Travel Destination" />
+  
+  
+            </ul>
+            <button id="next-slide" class="slide-button material-symbols-rounded">
+              <i class="fa-solid fa-greater-than" style="font-size: 1.5rem;"></i>
+            </button>
+          </div>
+          <div class="slider-scrollbar">
+            <div class="scrollbar-track">
+              <div class="scrollbar-thumb"></div>
+            </div>
+          </div>
+        </div>
+  
+      </section>
+      <script>
+        const initSlider = () => {
+    const imageList = document.querySelector(".slider-wrapper .image-list");
+    const [prevBtn, nextBtn] = document.querySelectorAll(".slider-wrapper .slide-button");
+    const thumb = document.querySelector(".slider-container .slider-scrollbar .scrollbar-thumb");
+    const maxScroll = imageList.scrollWidth - imageList.clientWidth;
+
+    const updateUI = () => {
+        const thumbPos = (imageList.scrollLeft / maxScroll) * (thumb.parentElement.clientWidth - thumb.offsetWidth);
+        thumb.style.left = `${thumbPos}px`;
+        prevBtn.style.display = imageList.scrollLeft > 0 ? "flex" : "none";
+        nextBtn.style.display = imageList.scrollLeft < maxScroll ? "flex" : "none";
+    };
+
+    thumb.onmousedown = (e) => {
+        const startX = e.clientX, startLeft = thumb.offsetLeft;
+        document.onmousemove = (e) => {
+            const newLeft = Math.min(Math.max(0, startLeft + e.clientX - startX), thumb.parentElement.clientWidth - thumb.offsetWidth);
+            thumb.style.left = `${newLeft}px`;
+            imageList.scrollLeft = (newLeft / (thumb.parentElement.clientWidth - thumb.offsetWidth)) * maxScroll;
+        };
+        document.onmouseup = () => document.onmousemove = null;
+    };
+    prevBtn.onclick = () => imageList.scrollBy({ left: -imageList.clientWidth, behavior: "smooth" });
+    nextBtn.onclick = () => imageList.scrollBy({ left: imageList.clientWidth, behavior: "smooth" });
+    imageList.onscroll = updateUI;
+    updateUI();
+};
+
+window.onload = window.onresize = initSlider;
+      </script>
+</body>
+</html>

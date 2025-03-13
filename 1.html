@@ -1,0 +1,521 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Before and After Slider</title>
+    <style>
+        .comparison-slider {
+            position: relative;
+            max-width: 800px; 
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+        }
+
+        .comparison-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-top: 56.25%; 
+            overflow: hidden;
+        }
+
+      
+        .comparison-before,
+        .comparison-after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .comparison-before img,
+        .comparison-after img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            display: block;
+        }
+
+        .comparison-after {
+            width: 50%;
+        }
+
+        .comparison-label {
+            position: absolute;
+            top: 20px;
+            padding: 8px 16px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            z-index: 3; 
+        }
+
+        .comparison-before .comparison-label {
+            left: 20px;
+        }
+
+        .comparison-after .comparison-label {
+            right: 20px;
+        }
+
+      
+        .comparison-range {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            appearance: none;
+            background: transparent;
+            outline: none;
+            margin: 0;
+            z-index: 2;
+            cursor: ew-resize;
+        }
+
+        .comparison-range::-webkit-slider-thumb {
+            appearance: none;
+            width: 6px;
+            height: 100%;
+            background: white;
+            cursor: ew-resize;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+        }
+
+        .comparison-range::-moz-range-thumb {
+            width: 6px;
+            height: 100%;
+            background: white;
+            cursor: ew-resize;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+        }
+    </style>
+</head>
+<body>
+    <div class="comparison-slider">
+        <div class="comparison-wrapper">
+            <div class="comparison-before">
+                <img src="./Assest/Before.webp" alt="Before Image">
+                <span class="comparison-label">Before</span>
+            </div>
+            <div class="comparison-after">
+                <img src="./Assest/After.webp" alt="After Image">
+                <span class="comparison-label">After</span>
+            </div>
+            <input type="range" min="0" max="100" value="50" class="comparison-range">
+        </div>
+    </div>
+    <script>
+        const slider = document.querySelector('.comparison-range');
+        const afterImage = document.querySelector('.comparison-after');
+
+        slider.addEventListener('input', (e) => {
+            const value = e.target.value;
+            afterImage.style.width = `${value}%`;
+        });
+    </script>
+</body>
+</html>
+ -->
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Before & After Image Slider</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f4f4f4;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            overflow: hidden;
+        }
+
+        .slider-container img {
+            width: 100%;
+            display: block;
+        }
+
+        .before-after {
+            position: relative;
+            width: 100%;
+        }
+
+        .before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            overflow: hidden;
+        }
+
+        .before img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: auto;
+        }
+
+        .slider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            background: #fff;
+            height: 100%;
+            cursor: ew-resize;
+            transform: translateX(-50%);
+        }
+
+        .slider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            border: 2px solid #000;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-container">
+        <div class="before-after">
+            <img src="./Assest/Before.webp" alt="After">
+            <div class="before">
+                <img src="./Assest/After.webp" alt="Before">
+            </div>
+            <div class="slider"></div>
+        </div>
+    </div>
+
+    <script>
+        const slider = document.querySelector('.slider');
+        const before = document.querySelector('.before');
+        const container = document.querySelector('.slider-container');
+
+        let isDragging = false;
+
+        slider.addEventListener('mousedown', () => isDragging = true);
+        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            let offsetX = e.clientX - container.offsetLeft;
+            let percent = (offsetX / container.offsetWidth) * 100;
+            if (percent > 100) percent = 100;
+            if (percent < 0) percent = 0;
+            before.style.width = percent + '%';
+            slider.style.left = percent + '%';
+        });
+    </script>
+</body>
+
+</html> -->
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side-by-Side Half Face Comparison</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0A192F;
+        }
+
+        .comparison-container {
+            display: flex;
+            width: 600px; /* Adjust size */
+            height: 400px; /* Adjust size */
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .half {
+            width: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .half img {
+            width: 200%; /* Double the width */
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+        }
+
+        .left img {
+            left: 0;
+        }
+
+        .right img {
+            right: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="comparison-container">
+        <div class="half left">
+            <img src="./Assest/Before.webp" alt="Before">
+        </div>
+        <div class="half right">
+            <img src="./Assest/After.webp" alt="After">
+        </div>
+    </div>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Face Reveal Slider</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0A192F;
+            margin: 0;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .image-wrapper img {
+            width: 200%; /* Double width to keep face centered */
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            left: -50%; /* Shift images so that faces are in center */
+        }
+
+        .before {
+            z-index: 2;
+            width: 50%;
+            transition: width 0.3s ease;
+        }
+
+        .after {
+            z-index: 1;
+        }
+
+        .slider-bar {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 8px;
+            height: 100%;
+            background: white;
+            cursor: ew-resize;
+            z-index: 3;
+            transition: transform 0.2s ease;
+        }
+
+        .slider-bar:hover {
+            transform: scale(1.2);
+        }
+
+        input[type="range"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: ew-resize;
+            z-index: 4;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="image-wrapper after">
+            <img src="./Assest/After.webp" alt="After">
+        </div>
+        <div class="image-wrapper before">
+            <img src="./Assest/Before.webp" alt="Before">
+        </div>
+        <div class="slider-bar"></div>
+        <input type="range" min="0" max="100" value="50">
+    </div>
+
+    <script>
+        const slider = document.querySelector("input[type='range']");
+        const beforeImage = document.querySelector(".before");
+        const sliderBar = document.querySelector(".slider-bar");
+
+        slider.addEventListener("input", (e) => {
+            const value = e.target.value;
+
+            beforeImage.style.width = `${value}%`;
+            sliderBar.style.left = `${value}%`;
+        });
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Face Reveal Slider</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0A192F;
+            margin: 0;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .image-wrapper img {
+            width: 200%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+        }
+
+        .before {
+            width: 50%;
+            z-index: 2;
+        }
+
+        .before img {
+            left: -50%;
+        }
+
+        .after {
+            width: 50%;
+            right: 0;
+            z-index: 1;
+        }
+
+        .after img {
+            left: 0;
+        }
+
+        /* Moving Divider Line */
+        .slider-bar {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: white;
+            cursor: ew-resize;
+            z-index: 3;
+            transition: left 0.2s ease-in-out;
+        }
+
+        input[type="range"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: ew-resize;
+            z-index: 4;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="image-wrapper before">
+            <img src="./Assest/Before.webp" alt="Before">
+        </div>
+        <div class="image-wrapper after">
+            <img src="./Assest/After.webp" alt="After">
+        </div>
+        <div class="slider-bar"></div>  <!-- Moving Line -->
+        <input type="range" min="0" max="100" value="50">
+    </div>
+
+    <script>
+        const slider = document.querySelector("input[type='range']");
+        const beforeImage = document.querySelector(".before");
+        const afterImage = document.querySelector(".after");
+        const sliderBar = document.querySelector(".slider-bar");
+
+        slider.addEventListener("input", (e) => {
+            const value = e.target.value;
+
+            beforeImage.style.width = `${value}%`;
+            afterImage.style.width = `${100 - value}%`;
+            afterImage.style.left = `${value}%`;
+            sliderBar.style.left = `${value}%`;
+        });
+    </script>
+</body>
+</html>
