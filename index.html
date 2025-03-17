@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,287 +9,526 @@
     <style>
         body {
             margin: 0;
-            font-family: 'Arial', sans-serif;
-            color: #555555; 
-            /* background: #000; */
+            font-family: 'Poppins', sans-serif;
+            color: #555555;
+            background-color: #f8f8f8;
         }
+
         .top-navbar {
-            background-color: #000000; 
-            padding: 10px 20px;
+            background-color: #000000;
+            padding: 15px 30px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 2px solid #FFD1DC; 
+            border-bottom: 2px solid #FFD1DC;
         }
+
         .top-navbar .logo {
-            font-size: 1.8em;
+            font-size: 2em;
             font-weight: bold;
-            color: #FFD1DC; 
+            color: #FFD1DC;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
+
         .top-navbar .menu {
             display: flex;
             align-items: center;
             gap: 25px;
         }
-        .top-navbar .menu a {
+
+        .top-navbar .menu a,
+        .top-navbar .menu i {
             text-decoration: none;
-            color: #FFD1DC; 
+            color: #FFD1DC;
             font-weight: bold;
-            padding: 5px 10px;
-            position: relative;
+            font-size: 1.1em;
+            padding: 8px;
             transition: all 0.3s ease;
         }
-        .top-navbar .menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #FFD1DC; 
-            transition: width 0.3s ease;
-        }
-        .top-navbar .menu a:hover::after {
-            width: 100%; 
-        }
-        .top-navbar .menu a:hover {
-            color: #FFFFFF; 
-        }
-        .top-navbar .menu i {
-            font-size: 1.2em;
-            cursor: pointer;
-            color: #FFD1DC; 
-            transition: color 0.3s ease;
-        }
+
+        .top-navbar .menu a:hover,
         .top-navbar .menu i:hover {
-            color: #FFFFFF; 
+            color: #FFFFFF;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8em;
+            color: #FFD1DC;
+            cursor: pointer;
         }
 
         .main-navbar {
-            background-color: #000000; 
-            padding: 10px 20px;
+            background-color: #000000;
+            padding: 15px;
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
             gap: 30px;
-            border-bottom: 2px solid #FFD1DC; 
+            border-bottom: 2px solid #FFD1DC;
         }
+
         .main-navbar .dropdown {
             position: relative;
         }
+
         .main-navbar .dropdown span {
             font-weight: bold;
-            color: #FFD1DC; 
+            color: #FFD1DC;
             cursor: pointer;
-            padding: 10px;
+            padding: 12px;
+            display: block;
             transition: all 0.3s ease;
+            font-size: 1.1em;
         }
-        .main-navbar .dropdown span:hover {
-            color: #FFFFFF; 
-        }
+
         .main-navbar .dropdown-content {
             display: none;
             position: absolute;
             background-color: #000000;
-            min-width: 150px;
-            box-shadow: 0px 8px 16px rgba(255, 209, 220, 0.2); 
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(255, 209, 220, 0.2);
             z-index: 1;
             border-radius: 5px;
-            border: 1px solid #FFD1DC; 
+            border: 1px solid #FFD1DC;
             animation: fadeIn 0.3s ease;
         }
+
+        .main-navbar .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: #FFD1DC;
+            padding: 12px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #FFD1DC;
+            color: #000000;
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(-10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        .main-navbar .dropdown-content a {
-            color: #FFD1DC; 
-            padding: 10px;
-            text-decoration: none;
-            display: block;
-            transition: all 0.3s ease;
+
+        @media (max-width: 768px) {
+            .top-navbar {
+                flex-direction: column;
+                align-items: center;
+                padding: 15px;
+            }
+
+            .top-navbar .menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                padding-top: 10px;
+            }
+
+            .top-navbar .menu.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .main-navbar {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
         }
-        .main-navbar .dropdown-content a:hover {
-            background-color: #FFD1DC; 
+
+        /*navbar end*/
+
+        #hero-btn {
+            width: 18%;
+            font-size: 1.5rem;
+            background-color: #da9fac;
             color: #000000;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.616), 10px 10px 10px #FFD1DC;
+            background:linear-gradient(10px 10px 10px rgba(0, 0, 0, 0.616), #FFD1DC);
+            padding: 1.1rem 1rem;
+            border: 3px solid #da9fac;
+            border-radius: 5px;
+            position: absolute;
+            left: 41%;
+            top: 90%;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
         }
-        .main-navbar .dropdown:hover .dropdown-content {
-            display: block;
+
+        #hero-btn:hover {
+            background-color: #000;
+            color: #FFD1DC;
+            border: 3px solid #000;
+            box-shadow: 8px 10px 10px rgba(0, 0, 0, 0.822);
+        }
+
+        /* Slider */
+        .slider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #heading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: #f1bcc8;
+            margin-top: 5.5rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 2px;
+            position: relative;
+            animation: fadeIn 1.5s ease-in-out;
+            text-shadow: 3px 6px 0px black, 3px 6px 0px black, 3px 3px 0px black, 3px 6px 0px black;
+            font-style: italic;
         }
 
 
-        
-/* Slider */
-.slider {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
 
-#slider-heading {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 50px;
-	font-weight: 600;
-	margin: 4rem 0%;
-	color:#ffffff;
-	animation: fadeInUp 1s ease-out;
-}
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.slider-container {
-	max-width: 1200px;
-	width: 95%;
-}
+        /* #heading::after {
+           content: '';
+           display: block;
+           width: 100px;
+           height: 4px;
+           background:#FFD1DC;
+           margin: 15px auto 0;
+           border-radius: 2px;
+           text-align: center;
+       } */
+        .slider-container {
+            max-width: 1200px;
+            width: 95%;
+        }
 
-.slider-wrapper {
-	position: relative;
-}
+        .slider-wrapper {
+            position: relative;
+        }
 
-.slider-wrapper .slide-button {
-	position: absolute;
-	top: 50%;
-	outline: none;
-	border: none;
-	height: 50px;
-	width: 50px;
-	z-index: 5;
-	color: #fff;
-	display: flex;
-	cursor: pointer;
-	font-size: 2.2rem;
-	background: #000;
-	align-items: center;
-	justify-content: center;
-	border-radius: 50%;
-	transform: translateY(-50%);
-}
+        .slider-wrapper .slide-button {
+            position: absolute;
+            top: 50%;
+            outline: none;
+            border: none;
+            height: 50px;
+            width: 50px;
+            z-index: 5;
+            color: #fff;
+            display: flex;
+            cursor: pointer;
+            font-size: 2.2rem;
+            background: #000;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
 
-.slider-wrapper .slide-button:hover {
-	background: #404040;
-}
+        .slider-wrapper .slide-button:hover {
+            background: #404040;
+        }
 
-.slider-wrapper .slide-button#prev-slide {
-	left: -25px;
-	display: none;
-}
+        .slider-wrapper .slide-button#prev-slide {
+            left: -25px;
+            display: none;
+        }
 
-.slider-wrapper .slide-button#next-slide {
-	right: -25px;
-}
+        .slider-wrapper .slide-button#next-slide {
+            right: -25px;
+        }
 
-.slider-wrapper .image-list {
-	display: grid;
-	grid-template-columns: repeat(10, 1fr);
-	gap: 18px;
-	font-size: 0;
-	list-style: none;
-	margin-bottom: 30px;
-	overflow-x: auto;
-	scrollbar-width: none;
-}
+        .slider-wrapper .image-list {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 18px;
+            font-size: 0;
+            list-style: none;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
 
-.image-item {
-	border-radius: 10px;
-	transition: transform 0.2s ease;
-    margin-left: 20px;
-}
+        .image-item {
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+            margin-left: 20px;
+        }
 
-.slider-wrapper .image-list::-webkit-scrollbar {
-	display: none;
-}
+        .slider-wrapper .image-list::-webkit-scrollbar {
+            display: none;
+        }
 
-.slider-wrapper .image-list .image-item {
-	width: 350px;
-	height: 400px;
-	object-fit: cover;
-}
+        .slider-wrapper .image-list .image-item {
+            width: 350px;
+            height: 400px;
+            object-fit: cover;
+        }
 
-.container .slider-scrollbar {
-	height: 24px;
-	width: 100%;
-	display: flex;
-	align-items: center;
-}
+        .container .slider-scrollbar {
+            height: 24px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
 
-.slider-scrollbar .scrollbar-track {
-	background: #ccc;
-	width: 100%;
-	height: 2px;
-	display: flex;
-	align-items: center;
-	border-radius: 4px;
-	position: relative;
-}
+        .slider-scrollbar .scrollbar-track {
+            background: #ccc;
+            width: 100%;
+            height: 2px;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+            position: relative;
+        }
 
-.slider-scrollbar:hover .scrollbar-track {
-	height: 4px;
-}
+        .slider-scrollbar:hover .scrollbar-track {
+            height: 4px;
+        }
 
-.slider-scrollbar .scrollbar-thumb {
-	position: absolute;
-	background: #000;
-	top: 0;
-	bottom: 0;
-	width: 50%;
-	height: 100%;
-	cursor: grab;
-	border-radius: inherit;
-}
+        .slider-scrollbar .scrollbar-thumb {
+            position: absolute;
+            background: #000;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            height: 100%;
+            cursor: grab;
+            border-radius: inherit;
+        }
 
-.slider-scrollbar .scrollbar-thumb:active {
-	cursor: grabbing;
-	height: 8px;
-	top: -2px;
-}
+        .slider-scrollbar .scrollbar-thumb:active {
+            cursor: grabbing;
+            height: 8px;
+            top: -2px;
+        }
 
-.slider-scrollbar .scrollbar-thumb::after {
-	content: "";
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: -10px;
-	bottom: -10px;
-}
+        .slider-scrollbar .scrollbar-thumb::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -10px;
+            bottom: -10px;
+        }
 
-.image-item:hover {
-	transform: scale(1.03);
-}
+        .image-item:hover {
+            transform: scale(1.03);
+        }
 
-@media only screen and (max-width: 1023px) {
-	.slider-wrapper .slide-button {
-		display: none !important;
-	}
+        @media only screen and (max-width: 1023px) {
+            .slider-wrapper .slide-button {
+                display: none !important;
+            }
 
-	.slider-wrapper .image-list {
-		gap: 10px;
-		margin-bottom: 15px;
-		scroll-snap-type: x mandatory;
-	}
+            .slider-wrapper .image-list {
+                gap: 10px;
+                margin-bottom: 15px;
+                scroll-snap-type: x mandatory;
+            }
 
-	.slider-wrapper .image-list .image-item {
-		width: 280px;
-		height: 380px;
-	}
+            .slider-wrapper .image-list .image-item {
+                width: 280px;
+                height: 380px;
+            }
 
-	.slider-scrollbar .scrollbar-thumb {
-		width: 20%;
-	}
-}
+            .slider-scrollbar .scrollbar-thumb {
+                width: 20%;
+            }
+        }
 
+        /*slider end*/
+        /*Arrivels start*/
+        .arrivals {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .product {
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin: 0 auto;
+        }
+
+        .arrivels-product {
+            text-align: center;
+            transition: transform 0.3s ease;
+            width: 350px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .arrivels-product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .arrivels-product img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .arrivels-product:hover img {
+            transform: scale(1.1);
+        }
+
+        .arrivel-body {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.808);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+        }
+
+        .arrivels-product:hover .arrivel-body {
+            transform: translateY(0);
+        }
+
+        .arrivel-body h3 {
+            font-size: 1.6rem;
+            margin: 10px 0;
+            font-weight: 700;
+            color: #222;
+        }
+
+        .arrivel-body p {
+            font-size: 1rem;
+            color: #666;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .arrivel-body h4 {
+            font-size: 1.5rem;
+            color: #ffc2d0;
+            margin: 15px 0;
+            font-weight: 700;
+        }
+
+        .arrivel-body button {
+            padding: 12px 30px;
+            background: #ffc2d0;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .arrivel-body button:hover {
+            background: #ffbdcc;
+            transform: scale(1.05);
+        }
+        /*Arrivel end*/
+         /*Shop start*/
+         .shop {
+            color: white;
+            max-width: 880px;
+            display: flex;
+            justify-content: center; 
+            gap: 40px; 
+            margin: 0 auto;
+            margin-top: 5rem;
+        }
+    
+        .shopitem {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            width: 280px;
+            height:200px; 
+            border-radius: 50%;
+            background-color:#fff;
+            background: #000;
+            padding: 0.2rem 1rem;
+        }
+    
+        .shop-circle i {
+            color: brown;
+            font-size: 2.5rem;
+            padding:3.3rem;
+            background-color: aliceblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+    
+        .shop-circle a {
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .shop {
+                flex-wrap: wrap; 
+                gap: 20px; 
+            }
+    
+            .shopitem {
+                width: 120px; 
+                height: 120px;
+                padding: 1.8rem;
+            }
+    
+            .shop-circle i {
+                font-size:2rem; 
+
+            }
+        }
+        /*Shop end*/
     </style>
 </head>
+
 <body>
     <!-- Top Navbar -->
     <nav class="top-navbar">
         <div class="logo">Glamour Cosmetics</div>
+        <i class="fa-solid fa-bars menu-toggle"></i>
         <div class="menu">
             <a href="#">New Arrivals</a>
             <a href="#">Best Sellers</a>
@@ -298,6 +538,7 @@
             <i class="fa-solid fa-cart-shopping"></i>
         </div>
     </nav>
+
 
     <!-- Main Navbar -->
     <nav class="main-navbar">
@@ -346,76 +587,158 @@
     </nav>
 
     <!-- Content Section -->
-    <div >
-       <img style="width:100%;" src="./new5.jpeg" alt="">
+    <div>
+        <img style="width:100%;" src="./Assest/1.jpeg" alt="">
+        <button id="hero-btn">Shop Now</button>
     </div>
 
-      <!--Slider-->
-      <h1 id="slider-heading" style="align-items: center;"> Best Sellers</h1>
-      <section class="slider">
-  
+    <!--Slider-->
+    <h1 id="heading" style="align-items: center;"> Best Sellers</h1>
+    <section class="slider">
+
         <div class="slider-container">
-          <div class="slider-wrapper">
-            <button id="prev-slide" class="slide-button material-symbols-rounded"><i class="fa-solid fa-less-than"
-                style="font-size: 1.5rem;"></i>
-  
-            </button>
-            <ul class="image-list">
-              <img class="image-item" src="./Assest/contor.png" alt="Travel Destination" />
-              <img class="image-item" src="./Assest/lip glose.png" alt="Travel Destination" />
-              <img class="image-item" src="./Assest/Eye Shades.png" alt="Travel Destination" />
-              <img class="image-item" src="./Assest/Foundation.png" alt="Travel Destination" />
-              <img class="image-item" src="./Assest/jelly tint.png" alt="Travel Destination" />
-              <img class="image-item" src="./Assest/face powder1.png" alt="Travel Destination" />
-              <img class="image-item" src="./Assest/Lip tint 2 valvet.png" alt="Travel Destination" />
-              <img class="image-item" src="./Assest/powder.png" alt="Travel Destination" />
-              <img class="image-item" src="./Assest/LIP tint.png" alt="Travel Destination" />
-              <img class="image-item" src="./Assest/mascara.png" alt="Travel Destination" />
-  
-  
-            </ul>
-            <button id="next-slide" class="slide-button material-symbols-rounded">
-              <i class="fa-solid fa-greater-than" style="font-size: 1.5rem;"></i>
-            </button>
-          </div>
-          <div class="slider-scrollbar">
-            <div class="scrollbar-track">
-              <div class="scrollbar-thumb"></div>
+            <div class="slider-wrapper">
+                <button id="prev-slide" class="slide-button material-symbols-rounded"><i class="fa-solid fa-less-than"
+                        style="font-size: 1.5rem;"></i>
+
+                </button>
+                <ul class="image-list">
+                    <img class="image-item" src="./Assest/contor.png" alt="Contor" />
+                    <img class="image-item" src="./Assest/lip glose.png" alt="Lip Glose" />
+                    <img class="image-item" src="./Assest/Eye Shades.png" alt="Eye shadow" />
+                    <img class="image-item" src="./Assest/Foundation.png" alt="Foundation" />
+                    <img class="image-item" src="./Assest/jelly tint.png" alt="Jelly Tint" />
+                    <img class="image-item" src="./Assest/face powder1.png" alt="Face powder" />
+                    <img class="image-item" src="./Assest/Lip tint 2 valvet.png" alt="Valet Lip tint" />
+                    <img class="image-item" src="./Assest/powder.png" alt="Powder" />
+                    <img class="image-item" src="./Assest/LIP tint.png" alt="Lip Tint" />
+                    <img class="image-item" src="./Assest/mascara.png" alt="TMascara" />
+
+
+                </ul>
+                <button id="next-slide" class="slide-button material-symbols-rounded">
+                    <i class="fa-solid fa-greater-than" style="font-size: 1.5rem;"></i>
+                </button>
             </div>
-          </div>
+            <div class="slider-scrollbar">
+                <div class="scrollbar-track">
+                    <div class="scrollbar-thumb"></div>
+                </div>
+            </div>
         </div>
-  
-      </section>
-      <script>
+    </section>
+    <!--Arrivels start-->
+   
+    <section>
+        <h1 id="heading">New Arrivals</h1>
+        <div class="arrivals">
+            <div class="product">
+                <div class="arrivels-product">
+                    <img src="./Assest/serum 1.jpg" alt="RoC Serum">
+                    <div class="arrivel-body">
+                        <h3>RoC Multi Correxion Vitamin C Serum</h3>
+                        <p>Brightens and evens skin tone.</p>
+                        <h4>Price: Rs 7,496</h4>
+                        <button>Shop Now</button>
+                    </div>
+                </div>
+                <div class="arrivels-product">
+                    <img src="./srum.png" alt="GlowBloom Serum">
+                    <div class="arrivel-body">
+                        <h3>GlowBloom Face Serum</h3>
+                        <p>Hydrates and rejuvenates skin.</p>
+                        <h4>Price: Rs 7,551.6</h4>
+                        <button>Shop Now</button>
+                    </div>
+                </div>
+                <div class="arrivels-product">
+                    <img src="./Assest/corean suns cream.jpg" alt="Korean Sunscreen">
+                    <div class="arrivel-body">
+                        <h3>Korean Sunscreen</h3>
+                        <p>Provides SPF 50+ protection.</p>
+                        <h4>Price: Rs 1,200</h4>
+                        <button>Shop Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Arrivels end-->
+    <img src="./Untitled design (2).png" alt="" style="width: 100%;height: 500px;">
+    <!--shop start-->
+    <section>
+        <h1 id="heading">Shop By Category</h1>
+        <div class="shop">
+            <div class="shopitem">
+                <div class="shop-circle"><a href="#"><i class="fa-solid fa-pencil"></i></a></div>
+            </div>
+            <div class="shopitem">
+                <div class="shop-circle"><a href="#"><i class="fa-solid fa-pencil"></i></a></div>
+            </div>
+            <div class="shopitem">
+                <div class="shop-circle"><a href="#"><i class="fa-solid fa-pencil"></i></a></div>
+            </div>
+            <div class="shopitem">
+                <div class="shop-circle"><a href="#"><i class="fa-solid fa-pencil"></i></a></div>
+            </div>
+        </div>
+    </section>
+    <!--shop end-->
+    <script>
+        /////////////toggle start/////////////
+        document.querySelector('.menu-toggle').addEventListener('click', function () {
+            document.querySelector('.menu').classList.toggle('active');
+        });
+        //////////toogle end////////////////
+        ///////////////slider start///////////////////
         const initSlider = () => {
-    const imageList = document.querySelector(".slider-wrapper .image-list");
-    const [prevBtn, nextBtn] = document.querySelectorAll(".slider-wrapper .slide-button");
-    const thumb = document.querySelector(".slider-container .slider-scrollbar .scrollbar-thumb");
-    const maxScroll = imageList.scrollWidth - imageList.clientWidth;
+            const imageList = document.querySelector(".slider-wrapper .image-list");
+            const [prevBtn, nextBtn] = document.querySelectorAll(".slider-wrapper .slide-button");
+            const thumb = document.querySelector(".slider-container .slider-scrollbar .scrollbar-thumb");
+            const maxScroll = imageList.scrollWidth - imageList.clientWidth;
 
-    const updateUI = () => {
-        const thumbPos = (imageList.scrollLeft / maxScroll) * (thumb.parentElement.clientWidth - thumb.offsetWidth);
-        thumb.style.left = `${thumbPos}px`;
-        prevBtn.style.display = imageList.scrollLeft > 0 ? "flex" : "none";
-        nextBtn.style.display = imageList.scrollLeft < maxScroll ? "flex" : "none";
-    };
+            const updateUI = () => {
+                const thumbPos = (imageList.scrollLeft / maxScroll) * (thumb.parentElement.clientWidth - thumb.offsetWidth);
+                thumb.style.left = `${thumbPos}px`;
+                prevBtn.style.display = imageList.scrollLeft > 0 ? "flex" : "none";
+                nextBtn.style.display = imageList.scrollLeft < maxScroll ? "flex" : "none";
+            };
 
-    thumb.onmousedown = (e) => {
-        const startX = e.clientX, startLeft = thumb.offsetLeft;
-        document.onmousemove = (e) => {
-            const newLeft = Math.min(Math.max(0, startLeft + e.clientX - startX), thumb.parentElement.clientWidth - thumb.offsetWidth);
-            thumb.style.left = `${newLeft}px`;
-            imageList.scrollLeft = (newLeft / (thumb.parentElement.clientWidth - thumb.offsetWidth)) * maxScroll;
+            thumb.onmousedown = (e) => {
+                const startX = e.clientX, startLeft = thumb.offsetLeft;
+                document.onmousemove = (e) => {
+                    const newLeft = Math.min(Math.max(0, startLeft + e.clientX - startX), thumb.parentElement.clientWidth - thumb.offsetWidth);
+                    thumb.style.left = `${newLeft}px`;
+                    imageList.scrollLeft = (newLeft / (thumb.parentElement.clientWidth - thumb.offsetWidth)) * maxScroll;
+                };
+                document.onmouseup = () => document.onmousemove = null;
+            };
+            prevBtn.onclick = () => imageList.scrollBy({ left: -imageList.clientWidth, behavior: "smooth" });
+            nextBtn.onclick = () => imageList.scrollBy({ left: imageList.clientWidth, behavior: "smooth" });
+            imageList.onscroll = updateUI;
+            updateUI();
         };
-        document.onmouseup = () => document.onmousemove = null;
-    };
-    prevBtn.onclick = () => imageList.scrollBy({ left: -imageList.clientWidth, behavior: "smooth" });
-    nextBtn.onclick = () => imageList.scrollBy({ left: imageList.clientWidth, behavior: "smooth" });
-    imageList.onscroll = updateUI;
-    updateUI();
-};
 
-window.onload = window.onresize = initSlider;
-      </script>
+        window.onload = window.onresize = initSlider;
+        //////////////////slider end//////////////////////
+
+
+
+
+        ///////////////Shop start/////////////////////
+        let shopItems = document.querySelectorAll('.shopitem');
+shopItems.forEach(items=>{
+    items.addEventListener('click',()=>{
+        shopItems.forEach((e)=>{
+            e.style.backgroundColor='black';
+        })
+        
+    items.style.backgroundColor='pink'
+    })
+})
+///////////////Shop end//////////////////////
+    </script>
 </body>
+
 </html>
