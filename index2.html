@@ -1,102 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Residential Estimation Benefits</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /*Shop start*/
-        .shop {
-            color: white;
-            max-width: 880px;
-            display: flex;
-            justify-content: center; 
-            gap: 40px; 
-            margin: 0 auto;
+        :root {
+            --primary: #0A192F;
+            --secondary: #64FFDA;
+            --light: #E6F1FF;
+            --accent: #1E90FF;
+            --dark: #112240;
         }
-    
-        .shopitem {
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            width: 280px;
-            height:200px; 
-            border-radius: 50%;
-            background-color: aliceblue;
-            background: #000;
-            padding: 0.2rem 1rem;
-        }
-    
-        .shop-circle i {
-            color: brown;
-            font-size: 2rem;
-            padding:3.3rem;
-            background-color: aliceblue;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-        }
-    
-        .shop-circle a {
-            text-decoration: none;
-        }
-        @media (max-width: 768px) {
-            .shop {
-                flex-wrap: wrap; 
-                gap: 20px; 
-            }
-    
-            .shopitem {
-                width: 120px; 
-                height: 120px;
-                padding: 1.5rem;
-            }
-    
-            .shop-circle i {
-                font-size: 1.5rem; 
-
-            }
-        }
-        /*Shop end*/
-    </style>
-    
-</head>
-
-<body>
-    <div class="shop">
-        <div class="shopitem">
-            <div class="shop-circle"><a href="#"><i class="fa-solid fa-pencil"></i></a></div>
-        </div>
-        <div class="shopitem">
-            <div class="shop-circle"><a href="#"><i class="fa-solid fa-pencil"></i></a></div>
-        </div>
-        <div class="shopitem">
-            <div class="shop-circle"><a href="#"><i class="fa-solid fa-pencil"></i></a></div>
-        </div>
-        <div class="shopitem">
-            <div class="shop-circle"><a href="#"><i class="fa-solid fa-pencil"></i></a></div>
-        </div>
-    </div>
-    <script>
-        let shopItems = document.querySelectorAll('.shopitem');
-shopItems.forEach(items=>{
-    items.addEventListener('click',()=>{
-        shopItems.forEach((e)=>{
-            e.style.backgroundColor='black';
-        })
         
-    items.style.backgroundColor='pink'
-    })
-})
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #E6F1FF 100%);
+            margin: 0;
+            padding: 0;
+            color: var(--primary);
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: var(--light);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 2rem;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+        
+        .benefits-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        
+        .benefits-section h1 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .benefit::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.1) 0%, rgba(30, 144, 255, 0.1) 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .benefit:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .benefit:hover::before {
+            opacity: 1;
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit:hover .benefit-icon {
+            transform: scale(1.1);
+            color: var(--secondary);
+        }
+        
+        .benefit-content h3 {
+            font-size: 1.5rem;
+            margin: 0 0 15px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .benefit-content p {
+            margin: 0;
+            font-size: 1rem;
+            color: #555;
+        }
+        
+        .description {
+            text-align: center;
+            margin: 60px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            font-size: 1.2rem;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .description::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: var(--light);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 1rem;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+        
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            top: -100px;
+            right: -100px;
+        }
+        
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--secondary);
+            bottom: -50px;
+            left: -50px;
+        }
+        
+        @media (max-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title h1 {
+                font-size: 2rem;
+            }
+            
+            .benefit {
+                padding: 25px;
+            }
+        }
+        
+        /* Pulse animation for icons */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+        Residential Estimation - Accurate, Efficient, Reliable
+    </div>
+    
+    <section class="benefits-section">
+        <div class="section-title">
+            <h1>Benefits of Residential Estimation</h1>
+        </div>
+        
+        <div class="benefits-grid">
+            <div class="benefit">
+                <div class="benefit-icon pulse">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Accurate Budget Planning</h3>
+                    <p>Ensures cost estimation aligns perfectly with your financial planning, preventing overspending and unexpected expenses.</p>
+                </div>
+            </div>
+            
+            <div class="benefit">
+                <div class="benefit-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Time Efficiency</h3>
+                    <p>Reduces project delays by providing structured cost breakdowns for timely execution and decision making.</p>
+                </div>
+            </div>
+            
+            <div class="benefit">
+                <div class="benefit-icon">
+                    <i class="fas fa-piggy-bank"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Cost Savings</h3>
+                    <p>Identifies budget-friendly materials and labor options, reducing unnecessary expenses without compromising quality.</p>
+                </div>
+            </div>
+            
+            <div class="benefit">
+                <div class="benefit-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Customizable Reports</h3>
+                    <p>Provides detailed, tailored project insights helping homeowners and builders stay informed at every stage.</p>
+                </div>
+            </div>
+            
+            <div class="benefit">
+                <div class="benefit-icon">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Better Resource Management</h3>
+                    <p>Ensures optimal allocation of materials, labor, and equipment for maximum efficiency and minimal waste.</p>
+                </div>
+            </div>
+            
+            <div class="benefit">
+                <div class="benefit-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Risk Reduction</h3>
+                    <p>Minimizes financial risks and unexpected costs by providing clear, comprehensive estimates upfront.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="description">
+            <p>Accurate residential estimation is the cornerstone of successful project management. It empowers homeowners and builders to plan efficiently, avoid budget overruns, and ensure smooth project execution from start to finish. With precise estimates, you gain financial stability and peace of mind throughout your construction journey.</p>
+        </div>
+    </section>
+    
+    <div class="footer">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+        &copy; 2025 Residential Estimation. All Rights Reserved. | <a href="#" style="color: var(--secondary); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--secondary); text-decoration: none;">Terms of Service</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add smooth hover effects
+            const benefits = document.querySelectorAll('.benefit');
+            
+            benefits.forEach(benefit => {
+                benefit.addEventListener('mouseenter', () => {
+                    benefit.style.transform = 'translateY(-10px)';
+                    const icon = benefit.querySelector('.benefit-icon');
+                    icon.style.transform = 'scale(1.1)';
+                    icon.style.color = '#64FFDA';
+                });
+                
+                benefit.addEventListener('mouseleave', () => {
+                    benefit.style.transform = '';
+                    const icon = benefit.querySelector('.benefit-icon');
+                    if (!icon.classList.contains('pulse')) {
+                        icon.style.transform = '';
+                        icon.style.color = '';
+                    }
+                });
+                
+                benefit.addEventListener('click', () => {
+                    const title = benefit.querySelector('h3').textContent;
+                    benefit.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        benefit.style.transform = 'translateY(-10px)';
+                        alert(`Would you like to learn more about ${title}? Our team would be happy to provide detailed information.`);
+                    }, 200);
+                });
+            });
+            
+            // Animate shapes
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach((shape, index) => {
+                shape.style.transform = `rotate(${index * 45}deg)`;
+                
+                setInterval(() => {
+                    const currentRotate = shape.style.transform.match(/rotate\((\d+)deg\)/);
+                    if (currentRotate) {
+                        const newRotate = (parseInt(currentRotate[1]) + 1;
+                        shape.style.transform = `rotate(${newRotate}deg)`;
+                    }
+                }, 100);
+            });
+        });
     </script>
-
-
-
 </body>
-
 </html>

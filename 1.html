@@ -1,109 +1,606 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- 
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Artistic Beauty</title>
+     <style>
+         body {
+             margin: 0;
+             font-family: 'Playfair Display', serif;
+             background-color: #ffffff;
+             color: #333;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             height: 100vh;
+             overflow: hidden;
+         }
+ 
+         .container {
+             display: flex;
+             flex-wrap: wrap;
+             align-items: center;
+             max-width: 1200px;
+             padding: 20px;
+             gap: 20px;
+         }
+ 
+         .image {
+             flex: 1;
+             margin-right: 40px;
+             transition: transform 0.3s ease-in-out;
+         }
+ 
+         .image img {
+             max-width: 100%;
+             height: auto;
+             border-radius: 15px;
+             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+             transition: transform 0.3s ease-in-out;
+         }
+ 
+         .image:hover img {
+             transform: scale(1.05);
+         }
+ 
+         .text {
+             flex: 1.5;
+             text-align: center;
+             position: relative;
+             transition: transform 0.3s ease-in-out;
+         }
+ 
+         .text:hover {
+             transform: scale(1.02);
+         }
+ 
+         .text h1 {
+             font-size: 64px;
+             color: #000;
+             margin-top: 0;
+             margin-bottom: 20px;
+             font-weight: 700;
+             line-height: 1.2;
+             transition: color 0.3s ease-in-out;
+         }
+ 
+         .text h1 span {
+             color: #ffb6c1;
+             display: block;
+             font-size: 48px;
+             font-weight: 400;
+             margin-top: 10px;
+         }
+ 
+         .text p {
+             font-size: 18px;
+             line-height: 1.8;
+             color: #555;
+             margin-bottom: 30px;
+             max-width: 500px;
+             margin-left: auto;
+             margin-right: auto;
+             transition: color 0.3s ease-in-out;
+         }
+ 
+         .text p:hover {
+             color: #ff69b4;
+         }
+ 
+         .text a {
+             display: inline-block;
+             padding: 12px 25px;
+             background-color: #ffb6c1;
+             color: #000;
+             text-decoration: none;
+             border-radius: 30px;
+             font-weight: bold;
+             font-size: 16px;
+             transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+         }
+ 
+         .text a:hover {
+             background-color: #ff69b4;
+             transform: scale(1.1);
+         }
+ 
+         .text::before {
+             content: "";
+             position: absolute;
+             top: -50px;
+             left: -50px;
+             width: 150px;
+             height: 150px;
+             background-color: #ffb6c1;
+             border-radius: 50%;
+             z-index: -1;
+             opacity: 0.2;
+         }
+ 
+         .text::after {
+             content: "";
+             position: absolute;
+             bottom: -50px;
+             right: -50px;
+             width: 100px;
+             height: 100px;
+             background-color: #ffb6c1;
+             border-radius: 50%;
+             z-index: -1;
+             opacity: 0.2;
+         }
+ 
+         @media (max-width: 768px) {
+             .container {
+                 flex-direction: column;
+                 text-align: center;
+             }
+             .image {
+                 margin-right: 0;
+                 margin-bottom: 20px;
+             }
+             .text h1 {
+                 font-size: 48px;
+             }
+             .text h1 span {
+                 font-size: 36px;
+             }
+         }
+     </style>
+     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+ </head>
+ <body>
+     <div class="container">
+         <div class="image">
+             <img src="./Assest/Before.webp" alt="Artistic Makeup Look">
+         </div>
+         <div class="text">
+             <h1>Artistic <span>Beauty</span></h1>
+             <p>Welcome to <span style="color: #ffb6c1; font-weight: bold;">Glamour Art</span>, where makeup transforms into a masterpiece. Explore bold, creative looks that redefine beauty and inspire your inner artist.</p>
+             <p>From <span style="color: #ffb6c1; font-weight: bold;">avant-garde styles</span> to <span style="color: #ffb6c1; font-weight: bold;">everyday elegance</span>, we celebrate the art of self-expression. Because beauty is not just about looking good—it’s about feeling extraordinary.</p>
+             <a href="#">Create Your Look</a>
+         </div>
+     </div>
+ </body>
+ </html>
+  -->
 
+
+  <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop Items</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>HomeValue Pro | Property Valuation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Container Styling */
-        .shop {
+        /* ===== Base Styles ===== */
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --secondary: #4cc9f0;
+            --dark: #1b263b;
+            --light: #f8f9fa;
+            --text: #495057;
+            --gray: #adb5bd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            padding-top: 120px; /* Space for fixed navbars */
+        }
+        
+        /* ===== Top Notification Bar ===== */
+        .top-bar {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1001;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .top-bar-container {
             display: flex;
-            justify-content: center;
-            gap: 40px;
-            max-width: 900px;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
-            flex-wrap: wrap; 
         }
-        .shopitem {
+        
+        .top-bar-links {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background-color: #000;
-            padding: 1rem;
+            list-style: none;
         }
-        .shop-circle i {
-            color: brown;
-            font-size: 2rem;
-            padding:3.3rem;
-            background-color: aliceblue;
-            border-radius: 50%;
+        
+        .top-bar-links li {
+            margin-left: 20px;
+            position: relative;
+        }
+        
+        .top-bar-links li:not(:last-child)::after {
+            content: "•";
+            position: absolute;
+            right: -12px;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .top-bar-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
             display: flex;
-            justify-content: center;
             align-items: center;
         }
-
-        .shop-circle a {
+        
+        .top-bar-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .top-bar-links i {
+            margin-right: 5px;
+            font-size: 12px;
+        }
+        
+        /* ===== Main Navigation Bar ===== */
+        .main-nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 40px; /* Height of top bar */
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .main-nav.scrolled {
+            top: 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
             text-decoration: none;
         }
-        @media (max-width: 768px) {
-            .shopitem {
-                width: 150px;
-                height: 150px;
-            }
-
-            .shop-circle i {
-                font-size: 1.5rem;
-                padding: 1.5rem;
+        
+        .logo-icon {
+            font-size: 28px;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .logo-text span {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+            position: relative;
+        }
+        
+        .nav-links > li > a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links > li > a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links > li > a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links > li > a:hover {
+            color: var(--primary);
+        }
+        
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-content a {
+            color: var(--text);
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #f1f1f1;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f8f9fa;
+            color: var(--primary);
+            padding-left: 25px;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--dark);
+        }
+        
+        /* Hero Section for Context */
+        .hero {
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .nav-links li {
+                margin-left: 15px;
             }
         }
-
-        @media (max-width: 480px) {
-            .shopitem {
-                width: 120px;
-                height: 120px;
+        
+        @media (max-width: 768px) {
+            .top-bar-links {
+                display: none;
             }
-
-            .shop-circle i {
-                font-size: 1.2rem;
-                padding: 1rem;
+            
+            .top-bar-container {
+                justify-content: center;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+                text-align: center;
+            }
+            
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                display: none;
+            }
+            
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+            
+            .hamburger {
+                display: block;
             }
         }
     </style>
 </head>
-
 <body>
-    <div class="shop">
-        <div class="shopitem">
-            <div class="shop-circle">
-                <a href="#"><i class="fa-solid fa-pencil"></i></a>
+    <!-- Top Notification Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="offer-text">
+                <i class="fas fa-star"></i> Get 50% off premium reports this week only!
             </div>
-        </div>
-        <div class="shopitem">
-            <div class="shop-circle">
-                <a href="#"><i class="fa-solid fa-pencil"></i></a>
-            </div>
-        </div>
-        <div class="shopitem">
-            <div class="shop-circle">
-                <a href="#"><i class="fa-solid fa-pencil"></i></a>
-            </div>
-        </div>
-        <div class="shopitem">
-            <div class="shop-circle">
-                <a href="#"><i class="fa-solid fa-pencil"></i></a>
-            </div>
+            <ul class="top-bar-links">
+                <li><a href="#"><i class="fas fa-phone"></i> (800) 555-1234</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> support@homevaluepro.com</a></li>
+                <li><a href="#"><i class="fas fa-user"></i> Login</a></li>
+            </ul>
         </div>
     </div>
-
+    
+    <!-- Main Navigation Bar -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="logo-text">
+                    Home<span>Value</span> Pro
+                </div>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Services <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#">Home Valuation</a>
+                        <a href="#">Market Analysis</a>
+                        <a href="#">Refinance Estimates</a>
+                        <a href="#">Investment Properties</a>
+                    </div>
+                </li>
+                <li><a href="#">How It Works</a></li>
+                <li><a href="#">Testimonials</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#" class="btn btn-outline">Get Estimate</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section for Context -->
+    <section class="hero">
+        <div>
+            <h1>Discover Your Home's True Value</h1>
+            <p>Accurate residential property estimates in minutes</p>
+        </div>
+    </section>
+    
+    <!-- JavaScript -->
     <script>
-         let shopItems = document.querySelectorAll('.shopitem');
-shopItems.forEach(items=>{
-    items.addEventListener('click',()=>{
-        shopItems.forEach((e)=>{
-            e.style.backgroundColor='black';
-        })
-        
-    items.style.backgroundColor='pink'
-    })
-})
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const mainNav = document.getElementById('mainNav');
+            
+            // Mobile menu toggle
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Sticky navbar on scroll
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    mainNav.classList.add('scrolled');
+                } else {
+                    mainNav.classList.remove('scrolled');
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 120,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                            hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
+                    }
+                });
+            });
+        });
     </script>
 </body>
-
 </html>
+
+
+
+
