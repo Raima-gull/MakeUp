@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Residential Estimation Benefits</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #0A192F;
@@ -13,6 +13,7 @@
             --light: #E6F1FF;
             --accent: #1E90FF;
             --dark: #112240;
+            --gradient: linear-gradient(135deg, var(--secondary), var(--accent));
         }
         
         body {
@@ -22,18 +23,22 @@
             padding: 0;
             color: var(--primary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
             color: var(--light);
             text-align: center;
-            padding: 30px 20px;
-            font-size: 2rem;
-            font-weight: 600;
+            padding: 60px 20px;
+            font-size: 2.5rem;
+            font-weight: 700;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 30px rgba(10, 25, 47, 0.3);
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
         
         .header::after {
@@ -43,66 +48,75 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            background: var(--gradient);
+        }
+        
+        .header-text {
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
         .benefits-section {
             max-width: 1200px;
-            margin: 60px auto;
+            margin: 80px auto;
             padding: 0 20px;
-        }
-        
-        .benefits-section h1 {
-            font-size: 2.8rem;
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 50px;
             position: relative;
-            display: inline-block;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
+            position: relative;
         }
         
         .section-title h1 {
-            font-size: 2.8rem;
+            font-size: 3.5rem;
             margin: 0;
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             position: relative;
             display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: -1px;
         }
         
         .section-title h1::after {
             content: "";
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
-            border-radius: 2px;
+            width: 100px;
+            height: 5px;
+            background: var(--gradient);
+            border-radius: 5px;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 700px;
+            margin: 20px auto 0;
         }
         
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            gap: 40px;
         }
         
         .benefit {
             background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
             z-index: 1;
+            border: 1px solid rgba(100, 255, 218, 0.2);
         }
         
         .benefit::before {
@@ -115,54 +129,82 @@
             background: linear-gradient(135deg, rgba(100, 255, 218, 0.1) 0%, rgba(30, 144, 255, 0.1) 100%);
             z-index: -1;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.5s ease;
         }
         
         .benefit:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
         }
         
         .benefit:hover::before {
             opacity: 1;
+            transform: scale(1.05);
         }
         
         .benefit-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--accent);
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
+            margin-bottom: 25px;
+            transition: all 0.4s ease;
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.1) 0%, rgba(30, 144, 255, 0.1) 100%);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            border-radius: 50%;
         }
         
         .benefit:hover .benefit-icon {
-            transform: scale(1.1);
+            transform: translateY(-5px) rotate(5deg);
             color: var(--secondary);
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.2) 0%, rgba(30, 144, 255, 0.2) 100%);
         }
         
         .benefit-content h3 {
-            font-size: 1.5rem;
-            margin: 0 0 15px;
+            font-size: 1.7rem;
+            margin: 0 0 20px;
             color: var(--primary);
             font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .benefit-content h3::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .benefit:hover .benefit-content h3::after {
+            width: 80px;
         }
         
         .benefit-content p {
             margin: 0;
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #555;
+            line-height: 1.7;
         }
         
         .description {
             text-align: center;
-            margin: 60px auto;
-            padding: 40px;
+            margin: 80px auto;
+            padding: 50px;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            font-size: 1.2rem;
-            max-width: 800px;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            font-size: 1.3rem;
+            max-width: 900px;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(100, 255, 218, 0.2);
         }
         
         .description::before {
@@ -170,18 +212,66 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 5px;
+            width: 8px;
             height: 100%;
-            background: linear-gradient(to bottom, var(--secondary), var(--accent));
+            background: var(--gradient);
+        }
+        
+        .description p {
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: var(--gradient);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(30, 144, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .cta-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(30, 144, 255, 0.4);
+        }
+        
+        .cta-button:hover::before {
+            opacity: 1;
         }
         
         .footer {
             background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
             color: var(--light);
             text-align: center;
-            padding: 30px 20px;
-            font-size: 1rem;
+            padding: 50px 20px;
+            font-size: 1.1rem;
             position: relative;
+            margin-top: 80px;
         }
         
         .footer::before {
@@ -191,9 +281,70 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            background: var(--gradient);
         }
         
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .footer-links a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        /* Floating shapes animation */
         .floating-shapes {
             position: absolute;
             top: 0;
@@ -201,29 +352,125 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: -1;
+            z-index: 0;
         }
         
         .shape {
             position: absolute;
-            opacity: 0.1;
+            opacity: 0.15;
             border-radius: 50%;
+            filter: blur(10px);
+            animation: float 15s infinite linear;
         }
         
         .shape-1 {
             width: 300px;
             height: 300px;
             background: var(--accent);
-            top: -100px;
-            right: -100px;
+            top: 10%;
+            right: 5%;
+            animation-delay: 0s;
         }
         
         .shape-2 {
             width: 200px;
             height: 200px;
             background: var(--secondary);
-            bottom: -50px;
-            left: -50px;
+            bottom: 10%;
+            left: 5%;
+            animation-delay: 2s;
+        }
+        
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            background: var(--light);
+            top: 50%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        .shape-4 {
+            width: 250px;
+            height: 250px;
+            background: var(--accent);
+            bottom: 20%;
+            right: 15%;
+            animation-delay: 6s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+        
+        /* Particle animation */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: var(--secondary);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: particle-float 10s infinite linear;
+        }
+        
+        @keyframes particle-float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        /* Glow effect */
+        .glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: radial-gradient(circle at center, rgba(100, 255, 218, 0.1) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .header {
+                font-size: 2rem;
+                padding: 50px 20px;
+            }
+            
+            .section-title h1 {
+                font-size: 2.8rem;
+            }
         }
         
         @media (max-width: 768px) {
@@ -232,48 +479,116 @@
             }
             
             .section-title h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .benefit {
-                padding: 25px;
+                padding: 30px;
+            }
+            
+            .description {
+                padding: 30px;
+                font-size: 1.1rem;
+            }
+            
+            .header {
+                font-size: 1.8rem;
             }
         }
         
-        /* Pulse animation for icons */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        @media (max-width: 576px) {
+            .section-title h1 {
+                font-size: 1.8rem;
+            }
+            
+            .benefit-content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .benefit-content p {
+                font-size: 1rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
         
-        .pulse {
-            animation: pulse 2s infinite;
+        /* Scroll animation */
+        .benefit, .description {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .benefit.visible, .description.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Custom cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--secondary);
+            mix-blend-mode: difference;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+        }
+        
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
         }
     </style>
 </head>
 <body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
     <div class="header">
         <div class="floating-shapes">
             <div class="shape shape-1"></div>
             <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
         </div>
-        Residential Estimation - Accurate, Efficient, Reliable
+        <div class="particles" id="particles"></div>
+        <div class="glow"></div>
+        <div class="header-text">Residential Estimation Excellence</div>
     </div>
     
     <section class="benefits-section">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+        
         <div class="section-title">
             <h1>Benefits of Residential Estimation</h1>
+            <p>Discover how precise cost estimation transforms your construction projects from concept to completion</p>
         </div>
         
         <div class="benefits-grid">
             <div class="benefit">
-                <div class="benefit-icon pulse">
+                <div class="benefit-icon">
                     <i class="fas fa-check-circle"></i>
                 </div>
                 <div class="benefit-content">
                     <h3>Accurate Budget Planning</h3>
-                    <p>Ensures cost estimation aligns perfectly with your financial planning, preventing overspending and unexpected expenses.</p>
+                    <p>Ensures cost estimation aligns perfectly with your financial planning, preventing overspending and unexpected expenses. Our detailed breakdowns give you complete financial transparency.</p>
                 </div>
             </div>
             
@@ -283,7 +598,7 @@
                 </div>
                 <div class="benefit-content">
                     <h3>Time Efficiency</h3>
-                    <p>Reduces project delays by providing structured cost breakdowns for timely execution and decision making.</p>
+                    <p>Reduces project delays by providing structured cost breakdowns for timely execution and decision making. Streamline your workflow with our optimized scheduling tools.</p>
                 </div>
             </div>
             
@@ -293,7 +608,7 @@
                 </div>
                 <div class="benefit-content">
                     <h3>Cost Savings</h3>
-                    <p>Identifies budget-friendly materials and labor options, reducing unnecessary expenses without compromising quality.</p>
+                    <p>Identifies budget-friendly materials and labor options, reducing unnecessary expenses without compromising quality. Average savings of 15-25% on project costs.</p>
                 </div>
             </div>
             
@@ -303,7 +618,7 @@
                 </div>
                 <div class="benefit-content">
                     <h3>Customizable Reports</h3>
-                    <p>Provides detailed, tailored project insights helping homeowners and builders stay informed at every stage.</p>
+                    <p>Provides detailed, tailored project insights helping homeowners and builders stay informed at every stage. Export in multiple formats for seamless collaboration.</p>
                 </div>
             </div>
             
@@ -313,7 +628,7 @@
                 </div>
                 <div class="benefit-content">
                     <h3>Better Resource Management</h3>
-                    <p>Ensures optimal allocation of materials, labor, and equipment for maximum efficiency and minimal waste.</p>
+                    <p>Ensures optimal allocation of materials, labor, and equipment for maximum efficiency and minimal waste. Real-time tracking keeps your project on target.</p>
                 </div>
             </div>
             
@@ -323,13 +638,15 @@
                 </div>
                 <div class="benefit-content">
                     <h3>Risk Reduction</h3>
-                    <p>Minimizes financial risks and unexpected costs by providing clear, comprehensive estimates upfront.</p>
+                    <p>Minimizes financial risks and unexpected costs by providing clear, comprehensive estimates upfront. Our contingency planning protects your investment.</p>
                 </div>
             </div>
         </div>
         
         <div class="description">
             <p>Accurate residential estimation is the cornerstone of successful project management. It empowers homeowners and builders to plan efficiently, avoid budget overruns, and ensure smooth project execution from start to finish. With precise estimates, you gain financial stability and peace of mind throughout your construction journey.</p>
+            
+            <a href="#contact" class="cta-button">Get Your Free Estimate Now</a>
         </div>
     </section>
     
@@ -338,42 +655,146 @@
             <div class="shape shape-1"></div>
             <div class="shape shape-2"></div>
         </div>
-        &copy; 2025 Residential Estimation. All Rights Reserved. | <a href="#" style="color: var(--secondary); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--secondary); text-decoration: none;">Terms of Service</a>
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+            <a href="#">About</a>
+            <a href="#">Careers</a>
+        </div>
+        <p>&copy; 2025 Residential Estimation. All Rights Reserved.</p>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Add smooth hover effects
+            // Create particles
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.width = `${Math.random() * 5 + 2}px`;
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                particlesContainer.appendChild(particle);
+            }
+            
+            // Custom cursor
+            const cursor = document.querySelector('.cursor');
+            const cursorFollower = document.querySelector('.cursor-follower');
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = `${e.clientX}px`;
+                cursor.style.top = `${e.clientY}px`;
+                
+                setTimeout(() => {
+                    cursorFollower.style.left = `${e.clientX}px`;
+                    cursorFollower.style.top = `${e.clientY}px`;
+                }, 100);
+            });
+            
+            document.querySelectorAll('a, button, .benefit').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(2)';
+                    cursorFollower.style.transform = 'translate(-50%, -50%) scale(0.5)';
+                    cursorFollower.style.borderColor = 'var(--secondary)';
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursorFollower.style.borderColor = 'var(--accent)';
+                });
+            });
+            
+            // Scroll animation
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.benefit, .description');
+                elements.forEach(el => {
+                    const elementPosition = el.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementPosition < windowHeight - 100) {
+                        el.classList.add('visible');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Trigger on load
+            
+            // Benefit hover effects
             const benefits = document.querySelectorAll('.benefit');
             
             benefits.forEach(benefit => {
                 benefit.addEventListener('mouseenter', () => {
-                    benefit.style.transform = 'translateY(-10px)';
                     const icon = benefit.querySelector('.benefit-icon');
-                    icon.style.transform = 'scale(1.1)';
-                    icon.style.color = '#64FFDA';
+                    icon.style.transform = 'translateY(-5px) rotate(5deg)';
+                    icon.style.color = 'var(--secondary)';
                 });
                 
                 benefit.addEventListener('mouseleave', () => {
-                    benefit.style.transform = '';
                     const icon = benefit.querySelector('.benefit-icon');
-                    if (!icon.classList.contains('pulse')) {
-                        icon.style.transform = '';
-                        icon.style.color = '';
-                    }
+                    icon.style.transform = '';
+                    icon.style.color = '';
                 });
                 
                 benefit.addEventListener('click', () => {
                     const title = benefit.querySelector('h3').textContent;
                     benefit.style.transform = 'scale(0.95)';
+                    
+                    // Create ripple effect
+                    const ripple = document.createElement('div');
+                    ripple.style.position = 'absolute';
+                    ripple.style.width = '10px';
+                    ripple.style.height = '10px';
+                    ripple.style.backgroundColor = 'rgba(100, 255, 218, 0.5)';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.pointerEvents = 'none';
+                    ripple.style.transform = 'translate(-50%, -50%)';
+                    
+                    // Get mouse position relative to benefit
+                    benefit.addEventListener('mousemove', function getPosition(e) {
+                        const rect = benefit.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        
+                        ripple.style.left = `${x}px`;
+                        ripple.style.top = `${y}px`;
+                        
+                        benefit.appendChild(ripple);
+                        
+                        // Animate ripple
+                        setTimeout(() => {
+                            ripple.style.width = '300px';
+                            ripple.style.height = '300px';
+                            ripple.style.opacity = '0';
+                            ripple.style.transition = 'all 0.8s ease-out';
+                            
+                            setTimeout(() => {
+                                ripple.remove();
+                            }, 800);
+                        }, 10);
+                        
+                        // Remove this event listener after first use
+                        benefit.removeEventListener('mousemove', getPosition);
+                    }, {once: true});
+                    
                     setTimeout(() => {
-                        benefit.style.transform = 'translateY(-10px)';
-                        alert(`Would you like to learn more about ${title}? Our team would be happy to provide detailed information.`);
+                        benefit.style.transform = 'translateY(-15px) scale(1.02)';
                     }, 200);
                 });
             });
             
-            // Animate shapes
+            // Floating shapes animation
             const shapes = document.querySelectorAll('.shape');
             shapes.forEach((shape, index) => {
                 shape.style.transform = `rotate(${index * 45}deg)`;
@@ -385,6 +806,28 @@
                         shape.style.transform = `rotate(${newRotate}deg)`;
                     }
                 }, 100);
+            });
+            
+            // CTA button animation
+            const ctaButton = document.querySelector('.cta-button');
+            ctaButton.addEventListener('mouseenter', () => {
+                ctaButton.style.transform = 'translateY(-5px)';
+                ctaButton.style.boxShadow = '0 15px 30px rgba(30, 144, 255, 0.4)';
+            });
+            
+            ctaButton.addEventListener('mouseleave', () => {
+                ctaButton.style.transform = '';
+                ctaButton.style.boxShadow = '0 10px 20px rgba(30, 144, 255, 0.3)';
+            });
+            
+            ctaButton.addEventListener('click', () => {
+                ctaButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                setTimeout(() => {
+                    ctaButton.innerHTML = '<i class="fas fa-check"></i> Request Sent!';
+                    setTimeout(() => {
+                        ctaButton.innerHTML = 'Get Your Free Estimate Now';
+                    }, 2000);
+                }, 1500);
             });
         });
     </script>
